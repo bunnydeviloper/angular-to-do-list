@@ -6,6 +6,8 @@ import { Component } from '@angular/core';
     <h1>
       Welcome to {{ title }}!
     </h1>
+
+    <app-input-button-unit></app-input-button-unit>
   `,
   styleUrls: ['./app.component.css']
 })
