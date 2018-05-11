@@ -19,23 +19,16 @@ import { TodoListService } from '../services/todo-list.service';
 })
 export class ListManagerComponent implements OnInit {
 
-  todoList: TodoItem[] = [
-    {title: 'install NodeJS'},
-    {title: 'install Angular CLI'},
-    {title: 'create new app'},
-    {title: 'serve app'},
-    {title: 'develop app'},
-    {title: 'deploy app'},
-  ];
+  todoList: TodoItem[];
 
-  constructor() { }
+  constructor(private todoListService: TodoListService) { }
 
   ngOnInit() {
     this.todoList = this.todoListService.getTodoList();
   }
 
-  addItem(title: string) {    
-    this.todoList.push({ title });
+  addItem(title: string) {
+    this.todoListService.addItem({ title });
   }
 
 }
