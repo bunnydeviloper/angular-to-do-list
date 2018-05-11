@@ -6,7 +6,8 @@ import { TodoItem } from './interfaces/todo-item';
   template: `
     <h1 *ngIf="userLoggedIn">Welcome!</h1>
 
-    <app-input-button-unit></app-input-button-unit>
+    <app-input-button-unit (submit)="addItem($event)">
+    </app-input-button-unit>
     
     <ul>
       <li *ngFor="let todoItem of todoList">
@@ -32,4 +33,9 @@ todoList: TodoItem[] = [
   {title: 'develop app'},
   {title: 'deploy app'},
 ];
+
+addItem(value: string) {
+  this.todoList.push({ title: value });
+}
+
 }

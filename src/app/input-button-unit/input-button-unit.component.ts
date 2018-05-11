@@ -1,3 +1,4 @@
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -5,14 +6,16 @@ import { Component, OnInit } from '@angular/core';
   template: `
     <input #inputElementRef
            [value]="title"
-           (keyup.enter)="changeTitle(inputElementRef)">
-      <button (click)="changeTitle(inputElementRef)">
+           (keyup.enter)="submitValue($event.target.value)">
+      <button (click)="submitValue(inputElementRef.value)">
         Save
       </button>
   `,
   styleUrls: ['./input-button-unit.component.css']
 })
 export class InputButtonUnitComponent implements OnInit {
+
+  @Output() submit: EventEmitter<string> = new EventEmitter();
 
   title = 'Hello World!';
 
@@ -22,9 +25,12 @@ export class InputButtonUnitComponent implements OnInit {
   ngOnInit() {
   }
 
-  changeTitle(inputElementReference) {
-    console.log(inputElementReference);
-    this.title = inputElementReference.value;
+  changeTitle(newTitle: string) {
+    this.submit.emit(newTitle);
+  }
+  
+  submitValue(newTitle: string) {
+    this.submit.emit(newTitle);
   }
 
 }
