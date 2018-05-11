@@ -18,4 +18,9 @@ private todoList: TodoItem[
   getTodoList() {
     return this.todoList;
   }
+
+  addItem(item: TodoItem) { 
+    this.todoList.push(item);
+  }
+
 }
