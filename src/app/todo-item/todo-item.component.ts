@@ -36,7 +36,5 @@ export class TodoItemComponent implements OnInit {
 
   completeItem() {
     this.isComplete = !this.isComplete;
-  );
   }
-  
 }
