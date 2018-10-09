@@ -5,22 +5,25 @@ import { Component, OnInit } from '@angular/core';
   template: `
     <p>input-button-unit works!</p>
     <p>The title is {{ title }}.</p>
+    <input [value]="title">
+    <button (click)="changeTitle('Button clicked!')" >Save</button>
   `,
   styleUrls: ['./input-button-unit.component.css']
 })
 export class InputButtonUnitComponent implements OnInit {
   title: string = "Hello World";
 
-  changeTitle(newTitle: string) {
-    this.title = newTitle;
-  }
-
   constructor() {
-    this.changeTitle("changed from inside constructor");
   }
 
   ngOnInit() {
-    // this.title = "changed from inside ngOnInit (>constructor)";
+    setTimeout(() => {
+      this.title = "changed after 3s";
+    }, 3000);
+  }
+
+  changeTitle(newTitle: string) {
+    this.title = newTitle;
   }
 
 }
