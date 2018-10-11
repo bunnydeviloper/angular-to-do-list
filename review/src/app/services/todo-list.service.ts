@@ -46,6 +46,6 @@ export class TodoListService {
   deleteItem(item: TodoItem) {
     const index = this.todoList.indexOf(item);
     this.todoList.splice(index, 1);
-    this.savelist();
+    this.saveList();
   }
 }
